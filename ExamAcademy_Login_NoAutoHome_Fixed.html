@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#081d3a"><title>Exam Academy</title>
+<style>
+:root{--navy:#081d3a;--blue:#1769d2;--bg:#eef3fb;--ink:#14243a;--muted:#65758b;--gold:#f4b942}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,"Noto Sans Devanagari",sans-serif;color:var(--ink)}button,input{font:inherit}
+header{background:linear-gradient(135deg,#071a34,#103c70 60%,#1265a8);color:#fff;padding:16px 16px 20px;border-radius:0 0 24px 24px;box-shadow:0 8px 22px #08264b25}
+.top{display:flex;align-items:center;gap:10px}.logo{height:43px;width:43px;border-radius:13px;background:#fff;color:#123765;display:grid;place-items:center;font-size:24px}.brand{font-size:18px;font-weight:900;letter-spacing:.5px;flex:1}.brand small{display:block;font-size:9px;color:#c5dcf7;letter-spacing:1.3px;margin-top:3px;font-weight:500}
+.welcome{margin-top:16px;padding:16px;border-radius:17px;background:linear-gradient(115deg,#164c83,#087bb6);border:1px solid #ffffff35}.welcome h1{font-size:20px;margin:0 0 7px}.welcome p{font-size:13px;line-height:1.5;color:#e3f2ff;margin:0}
+main{padding:17px 14px 92px}.section-title{font-size:17px;font-weight:900;margin:6px 2px 12px;color:#102b50;display:flex;gap:8px;align-items:center}.section-title:before{content:"";width:4px;height:19px;background:var(--gold);border-radius:5px}
+.exam,.card{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #e1eaf6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 4px 14px #17385c0d;width:100%;text-align:left;color:var(--ink)}.exam{position:relative}.exam:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}.ico{width:48px;height:48px;border-radius:14px;background:var(--tint);display:grid;place-items:center;font-size:24px;flex-shrink:0}.exam strong,.card b{display:block;font-size:15px}.exam small,.card small{display:block;color:var(--muted);font-size:12px;margin-top:4px}.arr{margin-left:auto;color:var(--blue);font-size:23px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tile{background:#fff;border:1px solid #e1eaf6;border-radius:15px;padding:14px 12px;min-height:94px;text-align:left;color:var(--ink);box-shadow:0 3px 12px #17385c0b}.tile span{display:block;font-size:23px;margin-bottom:8px}.tile b{font-size:13px}
+footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e8f2;display:flex;justify-content:space-around;padding:8px 2px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 15px #142b5010}footer button{border:0;background:none;color:#74839a;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 8px}footer span{font-size:19px}footer .active{color:#1260bf;font-weight:900}
+.page{display:none}.page.active{display:block}.back{border:0;background:#dfeafb;color:#174b91;padding:9px 13px;border-radius:10px;font-weight:800;margin:0 0 13px}.hero{background:linear-gradient(120deg,#102f56,#1769b2);color:#fff;padding:16px;border-radius:16px;margin-bottom:14px}.hero h2{margin:0 0 5px;font-size:20px}.hero p{margin:0;color:#d8eaff;font-size:12px}.primary{border:0;border-radius:12px;padding:13px 15px;background:linear-gradient(100deg,#1455ad,#1977d2);color:white;font-weight:800;width:100%;margin-top:9px}.secondary{border:1px solid #d8e3f0;border-radius:12px;padding:11px;background:#fff;color:#174b91;font-weight:700;width:100%;margin-top:8px}
+.qbox{background:#fff;border:1px solid #e0e9f5;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 4px 14px #17385c0d}.qmeta{display:flex;justify-content:space-between;color:#64748b;font-size:12px;margin-bottom:13px}.question{font-size:17px;font-weight:800;line-height:1.55;margin-bottom:14px}.option{display:block;width:100%;text-align:left;border:1px solid #dce5f1;background:#f8faff;padding:12px;border-radius:11px;margin:8px 0;color:#23364f}.option.selected{border-color:#1769d2;background:#e8f1ff;color:#104e9c;font-weight:800}.stat{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat div{background:#fff;padding:15px;border-radius:13px;text-align:center;border:1px solid #e1eaf6}.stat strong{display:block;font-size:23px;color:#145fbd}.field{margin:12px 0}.field label{display:block;font-size:12px;font-weight:800;color:#43546b;margin-bottom:6px}.field input{width:100%;border:1px solid #d9e3f0;border-radius:11px;padding:13px;background:#f8faff}.muted{color:var(--muted);font-size:12px;line-height:1.5}.pill{display:inline-block;background:#e6f0ff;color:#1455ad;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:800}
+.auth-wrap{min-height:100vh;background:linear-gradient(155deg,#071a34,#124b82 65%,#eaf2ff 65%);padding:28px 18px;display:flex;flex-direction:column;justify-content:center}.auth-brand{text-align:center;color:white;margin-bottom:22px}.auth-brand .cap{font-size:42px}.auth-brand h1{font-size:23px;margin:8px 0 4px;letter-spacing:.5px}.auth-brand p{margin:0;color:#d6e8ff;font-size:12px;letter-spacing:1px}.auth-card{background:white;border-radius:22px;padding:22px 19px;box-shadow:0 15px 40px #031a3540}.auth-card h2{margin:0 0 6px;color:#102b50;font-size:22px}.auth-card .sub{color:var(--muted);font-size:13px;margin:0 0 18px}.field{margin:12px 0}.field label{display:block;font-size:12px;font-weight:700;color:#43546b;margin-bottom:6px}.field input{width:100%;border:1px solid #d9e3f0;border-radius:11px;padding:13px 12px;background:#f8faff;outline:none;color:#14243a}.field input:focus{border-color:#1769d2;box-shadow:0 0 0 3px #1769d21c}.primary{width:100%;border:0;border-radius:12px;padding:14px;background:linear-gradient(100deg,#1455ad,#1977d2);color:white;font-weight:800;margin-top:9px}.secondary{width:100%;border:1px solid #d9e3f0;border-radius:12px;padding:12px;background:#fff;color:#174b91;font-weight:700;margin-top:10px}.switch{text-align:center;color:#61738b;font-size:13px;margin-top:16px}.switch a{color:#145fbd;font-weight:800;text-decoration:none}.disclaimer{font-size:11px;line-height:1.5;color:#718096;text-align:center;margin:14px 4px 0}
+</style></head>
+<body>
+<section id="auth" class="auth-wrap">
+ <div class="auth-brand"><div class="cap">🎓</div><h1>EXAM ACADEMY</h1><p>LEARN • PRACTICE • ACHIEVE</p></div>
+ <div class="auth-card" id="loginCard">
+  <h2>स्वागत आहे!</h2><p class="sub">तुमच्या अभ्यास प्रवासासाठी लॉगिन करा.</p>
+  <div class="field"><label>मोबाईल नंबर</label><input id="loginMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10 अंकी मोबाईल नंबर"></div>
+  <div class="field"><label>पासवर्ड</label><input id="loginPass" type="password" placeholder="पासवर्ड"></div>
+  <button class="primary" onclick="demoLogin()">Login करा</button>
+  <div class="switch">नवीन विद्यार्थी? <a href="#" onclick="showRegister();return false">Register करा</a></div>
+  <p class="disclaimer">Firebase Email/Password द्वारे खाते तयार होईल. मोबाईल नंबर लॉगिन ID म्हणून वापरला जाईल.</p>
+ </div>
+ <div class="auth-card" id="registerCard" style="display:none">
+  <h2>नवीन खाते तयार करा</h2><p class="sub">Exam Academy मध्ये आपले स्वागत आहे.</p>
+  <div class="field"><label>पूर्ण नाव</label><input id="regName" type="text" placeholder="तुमचे नाव"></div>
+  <div class="field"><label>मोबाईल नंबर</label><input id="regMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10 अंकी मोबाईल नंबर"></div>
+  <div class="field"><label>पासवर्ड</label><input id="regPass" type="password" placeholder="पासवर्ड तयार करा"></div>
+  <button class="primary" onclick="demoRegister()">Register करा</button>
+  <div class="switch">आधीच खाते आहे? <a href="#" onclick="showLogin();return false">Login करा</a></div>
+  <p class="disclaimer">पासवर्ड किमान 6 अक्षरांचा असावा. खाते Firebase मध्ये सुरक्षितपणे तयार होईल.</p>
+ </div>
+</section>
+<div id="app" style="display:none">
+<header><div class="top"><div class="logo">🎓</div><div class="brand">EXAM ACADEMY<small>LEARN • PRACTICE • ACHIEVE</small></div><div>♧</div></div><div class="welcome"><h1>नमस्कार विद्यार्थी! 👋</h1><p>तुमच्या यशाचा प्रवास इथून सुरू होतो.<br>आजचा अभ्यास सुरू करूया!</p></div></header>
+<main>
+<section id="home" class="page active">
+<div class="section-title">🎯 तुमची परीक्षा निवडा</div>
+<button class="exam" style="--accent:#1769d2;--tint:#e7f0ff" onclick="selectExam('Police Bharti')"><div class="ico">🛡️</div><div><strong>POLICE BHARTI</strong><small>महाराष्ट्र पोलीस भरती</small></div><span class="arr">›</span></button>
+<button class="exam" style="--accent:#15945d;--tint:#e4f7ed" onclick="selectExam('Agniveer')"><div class="ico">🎖️</div><div><strong>AGNIVEER</strong><small>Indian Army Recruitment</small></div><span class="arr">›</span></button>
+<button class="exam" style="--accent:#d88922;--tint:#fff2df" onclick="selectExam('SSC GD')"><div class="ico">⭐</div><div><strong>SSC GD</strong><small>General Duty Constable</small></div><span class="arr">›</span></button>
+<div class="section-title" style="margin-top:22px">📚 अभ्यास साहित्य</div>
+<div class="grid">
+<button class="tile" onclick="openGeneric('Test Series','📝')"><span>📝</span><b>Test Series</b></button><button class="tile" onclick="openGeneric('Study Notes','📚')"><span>📚</span><b>Study Notes</b></button>
+<button class="tile" onclick="openGeneric('Video Classes','▶️')"><span>▶️</span><b>Video Classes</b></button><button class="tile" onclick="openGeneric('Current Affairs','📰')"><span>📰</span><b>Current Affairs</b></button>
+<button class="tile" onclick="openGeneric('Previous Year Papers','📄')"><span>📄</span><b>Previous Year Papers</b></button><button class="tile" onclick="showResults()"><span>📊</span><b>Result & Progress</b></button>
+</div></section>
+<section id="exam" class="page"><button class="back" onclick="go('home')">← मुख्य पान</button><div class="hero"><h2 id="examName">Police Bharti</h2><p>तुमचा विषय निवडा आणि सराव सुरू करा.</p></div><div id="subjects"></div><button class="primary" onclick="startTest()">📝 10 प्रश्नांची सराव टेस्ट सुरू करा</button><p class="muted">ही नमुना टेस्ट आहे. अधिकृत परीक्षेचा प्रश्नसंच नाही.</p></section>
+<section id="test" class="page"><button class="back" onclick="confirmExit()">← टेस्ट सोडा</button><div class="hero"><h2 id="testName">सराव टेस्ट</h2><p id="testMeta">प्रश्न 1 / 10</p></div><div class="qbox"><div class="qmeta"><span id="qCount">प्रश्न 1</span><span>⏱ <b id="timer">10:00</b></span></div><div class="question" id="question"></div><div id="options"></div></div><button class="primary" onclick="nextQuestion()" id="nextBtn">पुढील प्रश्न</button><button class="secondary" onclick="finishTest()">टेस्ट सबमिट करा</button></section>
+<section id="result" class="page"><div class="hero"><h2>टेस्ट निकाल</h2><p>तुमचा सराव पूर्ण झाला.</p></div><div class="stat"><div><strong id="score">0/10</strong><span class="muted">गुण</span></div><div><strong id="percent">0%</strong><span class="muted">टक्केवारी</span></div></div><div class="card" style="display:block;margin-top:14px"><b id="resultMessage">छान प्रयत्न!</b><small id="resultDetail">तुमचा निकाल या डेमोमध्ये दाखवला आहे.</small></div><button class="primary" onclick="go('home')">मुख्य पानावर जा</button></section>
+<section id="generic" class="page"><button class="back" onclick="go('home')">← मुख्य पान</button><div class="hero"><h2 id="genericName">Study Notes</h2><p>Exam Academy अभ्यास विभाग</p></div><div id="genericContent"></div></section>
+<section id="profile" class="page"><div class="hero"><h2>विद्यार्थी Profile</h2><p>तुमची अभ्यास माहिती</p></div><div class="field"><label>विद्यार्थ्याचे नाव</label><input id="profileName" placeholder="तुमचे नाव"></div><div class="field"><label>मोबाईल नंबर (ऐच्छिक)</label><input id="profileMobile" inputmode="numeric" placeholder="मोबाईल नंबर"></div><button class="primary" onclick="saveProfile()">माहिती सेव्ह करा</button><p class="muted">तुमची प्रोफाइल माहिती Firebase मध्ये तुमच्या खात्याखाली सेव्ह होईल.</p></section>
+<section id="results" class="page"><button class="back" onclick="go('home')">← मुख्य पान</button><div class="hero"><h2>Result & Progress</h2><p>तुमचे अलीकडील सराव निकाल</p></div><div id="history"></div></section>
+</main>
+<footer><button class="active" onclick="go('home',this)"><span>⌂</span>Home</button><button onclick="openGeneric('Test Series','📝')"><span>▤</span>Test</button><button onclick="openGeneric('Study Notes','📚')"><span>▣</span>Study</button><button onclick="openGeneric('Video Classes','▶️')"><span>▷</span>Video</button><button onclick="go('profile',this)"><span>♙</span>Profile</button></footer>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCO_bazjAMaijoXQg7CFYj1BvwL3xcTPOY",
+  authDomain: "exam-academy-1bb03.firebaseapp.com",
+  databaseURL: "https://exam-academy-1bb03-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "exam-academy-1bb03",
+  storageBucket: "exam-academy-1bb03.firebasestorage.app",
+  messagingSenderId: "340035902495",
+  appId: "1:340035902495:web:30cdd99a70fd2f020a892a",
+  measurementId: "G-VNBGWDNEVQ"
+};
+firebase.initializeApp(firebaseConfig);
+const eaAuth = firebase.auth();
+const eaDb = firebase.database();
+let eaCurrentUser = null;
+const mobileEmail = m => `${m}@examacademy.app`;
+function firebaseError(err){
+ const map={"auth/email-already-in-use":"हा मोबाईल नंबर आधीच नोंदणीकृत आहे. Login करा.","auth/invalid-email":"मोबाईल नंबर तपासा.","auth/weak-password":"पासवर्ड किमान 6 अक्षरांचा ठेवा.","auth/user-not-found":"या मोबाईल नंबरचे खाते सापडले नाही.","auth/wrong-password":"पासवर्ड चुकीचा आहे.","auth/invalid-credential":"मोबाईल नंबर किंवा पासवर्ड चुकीचा आहे.","auth/network-request-failed":"इंटरनेट कनेक्शन तपासा.","PERMISSION_DENIED":"Database Rules अजून सेट केलेले नाहीत."};
+ return map[err.code] || err.message || 'काहीतरी चूक झाली. पुन्हा प्रयत्न करा.';
+}
+// IMPORTANT: Never route to Home just because Firebase restored an old session.
+// The app opens only after the user explicitly completes Login or Registration.
+eaAuth.onAuthStateChanged(user=>{ eaCurrentUser=user || null; });
+function showLogin(){document.getElementById('loginCard').style.display='block';document.getElementById('registerCard').style.display='none'}
+function showRegister(){document.getElementById('loginCard').style.display='none';document.getElementById('registerCard').style.display='block'}
+function enterApp(){document.getElementById('auth').style.display='none';document.getElementById('app').style.display='block';window.scrollTo(0,0)}
+async function openAfterAuth(user){eaCurrentUser=user;try{const snap=await eaDb.ref('users/'+user.uid+'/profile').once('value');const d=snap.val()||{};if(d.name)document.getElementById('profileName').value=d.name;if(d.mobile)document.getElementById('profileMobile').value=d.mobile;}catch(e){console.warn('Profile load:',e)}enterApp()}
+async function demoLogin(){let m=document.getElementById('loginMobile').value.trim(),p=document.getElementById('loginPass').value;if(!/^[0-9]{10}$/.test(m)||!p){alert('कृपया 10 अंकी मोबाईल नंबर आणि पासवर्ड भरा.');return}try{const cred=await eaAuth.signInWithEmailAndPassword(mobileEmail(m),p);await openAfterAuth(cred.user)}catch(e){alert(firebaseError(e))}}
+async function demoRegister(){let n=document.getElementById('regName').value.trim(),m=document.getElementById('regMobile').value.trim(),p=document.getElementById('regPass').value;if(!n||!/^[0-9]{10}$/.test(m)||p.length<6){alert('नाव, योग्य 10 अंकी मोबाईल नंबर आणि किमान 6 अक्षरांचा पासवर्ड भरा.');return}try{const cred=await eaAuth.createUserWithEmailAndPassword(mobileEmail(m),p);await eaDb.ref('users/'+cred.user.uid+'/profile').set({name:n,mobile:m,createdAt:firebase.database.ServerValue.TIMESTAMP});await openAfterAuth(cred.user)}catch(e){alert(firebaseError(e))}}
+
+const subjectsByExam={
+'Police Bharti':['मराठी','गणित','बुद्धिमत्ता','सामान्य ज्ञान'],
+'Agniveer':['General Knowledge','General Science','Mathematics','Reasoning'],
+'SSC GD':['General Intelligence & Reasoning','General Knowledge','Elementary Mathematics','Hindi / English']
+};
+const questions=[
+{q:'महाराष्ट्राची राजधानी कोणती?',o:['पुणे','मुंबई','नागपूर','नाशिक'],a:1},
+{q:'भारताचे संविधान कधी लागू झाले?',o:['१५ ऑगस्ट १९४७','२६ जानेवारी १९५०','२६ नोव्हेंबर १९४९','१ मे १९६०'],a:1},
+{q:'१२ × ८ = किती?',o:['८६','९२','९६','१०८'],a:2},
+{q:'खालीलपैकी विषम संख्या कोणती?',o:['२','४','७','८'],a:2},
+{q:'सूर्य कोणत्या दिशेला उगवतो?',o:['पश्चिम','उत्तर','दक्षिण','पूर्व'],a:3},
+{q:'एका आठवड्यात किती दिवस असतात?',o:['५','६','७','८'],a:2},
+{q:'भारताचा राष्ट्रीय प्राणी कोणता?',o:['सिंह','वाघ','हत्ती','मोर'],a:1},
+{q:'२५ + ३५ = किती?',o:['५०','५५','६०','६५'],a:2},
+{q:'पाण्याचे रासायनिक सूत्र कोणते?',o:['CO2','O2','H2O','NaCl'],a:2},
+{q:'भारतीय संविधान दिन कधी साजरा केला जातो?',o:['१५ ऑगस्ट','२६ जानेवारी','२६ नोव्हेंबर','१ मे'],a:2}
+];
+let currentExam='Police Bharti',qi=0,answers=[],seconds=600,tick=null;
+function go(id,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(el){document.querySelectorAll('footer button').forEach(b=>b.classList.remove('active'));el.classList.add('active')}window.scrollTo(0,0)}
+function selectExam(name){currentExam=name;document.getElementById('examName').textContent=name;let s=subjectsByExam[name];document.getElementById('subjects').innerHTML=s.map((x,i)=>`<div class="card" onclick="startTest()"><div class="ico" style="background:#e8f1ff">${['📖','🔢','🧠','🌍'][i]}</div><div><b>${x}</b><small>सराव प्रश्न आणि नमुना टेस्ट</small></div><span class="arr">›</span></div>`).join('');go('exam')}
+function startTest(){qi=0;answers=Array(questions.length).fill(-1);seconds=600;document.getElementById('testName').textContent=currentExam+' – सराव टेस्ट';renderQuestion();go('test');clearInterval(tick);tick=setInterval(()=>{seconds--;document.getElementById('timer').textContent=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');if(seconds<=0)finishTest()},1000)}
+function renderQuestion(){let q=questions[qi];document.getElementById('qCount').textContent='प्रश्न '+(qi+1)+' / '+questions.length;document.getElementById('testMeta').textContent='प्रश्न '+(qi+1)+' / '+questions.length;document.getElementById('question').textContent=q.q;document.getElementById('options').innerHTML=q.o.map((x,i)=>`<button class="option ${answers[qi]===i?'selected':''}" onclick="choose(${i})">${['A','B','C','D'][i]}. ${x}</button>`).join('');document.getElementById('nextBtn').textContent=qi===questions.length-1?'निकाल पहा':'पुढील प्रश्न'}
+function choose(i){answers[qi]=i;renderQuestion()}
+function nextQuestion(){if(qi<questions.length-1){qi++;renderQuestion()}else finishTest()}
+function confirmExit(){if(confirm('टेस्ट सोडायची आहे का?'))finishTest()}
+function finishTest(){if(!document.getElementById('test').classList.contains('active'))return;clearInterval(tick);let score=answers.reduce((n,a,i)=>n+(a===questions[i].a?1:0),0),pct=Math.round(score/questions.length*100);document.getElementById('score').textContent=score+'/'+questions.length;document.getElementById('percent').textContent=pct+'%';document.getElementById('resultMessage').textContent=pct>=70?'उत्तम प्रयत्न! असाच सराव सुरू ठेवा.':'छान प्रयत्न! पुन्हा सराव केल्याने सुधारणा होईल.';document.getElementById('resultDetail').textContent=currentExam+' • '+new Date().toLocaleDateString('en-IN');let h=JSON.parse(localStorage.getItem('ea_history')||'[]');h.unshift({exam:currentExam,score,pct,date:new Date().toLocaleDateString('en-IN')});localStorage.setItem('ea_history',JSON.stringify(h.slice(0,20)));if(eaCurrentUser){eaDb.ref('users/'+eaCurrentUser.uid+'/results').push({exam:currentExam,score,pct,date:new Date().toISOString()}).catch(e=>alert('निकाल सेव्ह झाला नाही: '+firebaseError(e)))}go('result')}
+function openGeneric(name,icon){document.getElementById('genericName').textContent=name;let content='';if(name==='Test Series')content='<div class="card"><div><b>Police Bharti – सराव टेस्ट</b><small>10 प्रश्न • नमुना चाचणी</small></div><button class="primary" onclick="selectExam(\'Police Bharti\');startTest()">Start</button></div><div class="card"><div><b>Agniveer – सराव टेस्ट</b><small>10 प्रश्न • नमुना चाचणी</small></div><button class="primary" onclick="selectExam(\'Agniveer\');startTest()">Start</button></div><div class="card"><div><b>SSC GD – सराव टेस्ट</b><small>10 प्रश्न • नमुना चाचणी</small></div><button class="primary" onclick="selectExam(\'SSC GD\');startTest()">Start</button></div>';else if(name==='Study Notes')content=['मराठी व्याकरण','गणित – मूलभूत संकल्पना','बुद्धिमत्ता','सामान्य ज्ञान','भारतीय राज्यव्यवस्था'].map(x=>`<div class="card"><div class="ico">📁</div><div><b>${x}</b><small>नोट्स पुढील टप्प्यात जोडल्या जातील</small></div></div>`).join('');else if(name==='Video Classes')content='<div class="card"><div><b>Video lessons</b><small>शैक्षणिक व्हिडिओ लिंक पुढील टप्प्यात जोडल्या जातील.</small></div></div>';else content='<div class="card"><div><b>'+name+'</b><small>हा विभाग पुढील टप्प्यात सामग्रीने भरला जाईल.</small></div></div>';document.getElementById('genericContent').innerHTML=content;go('generic')}
+async function saveProfile(){const data={name:document.getElementById('profileName').value.trim(),mobile:document.getElementById('profileMobile').value.trim()};if(!eaCurrentUser){alert('प्रोफाइल सेव्ह करण्यासाठी Login करा.');return}try{await eaDb.ref('users/'+eaCurrentUser.uid+'/profile').update(data);alert('प्रोफाइल Firebase मध्ये सेव्ह झाली.')}catch(e){alert(firebaseError(e))}}
+function showResults(){let h=JSON.parse(localStorage.getItem('ea_history')||'[]');document.getElementById('history').innerHTML=h.length?h.map(x=>`<div class="card"><div><b>${x.exam}</b><small>${x.date} • ${x.pct}%</small></div><span class="arr">${x.score}/10</span></div>`).join(''):'<div class="card"><b>अजून निकाल उपलब्ध नाहीत.</b><small>पहिली सराव टेस्ट पूर्ण करा.</small></div>';go('results')}
+</script></body></html>
