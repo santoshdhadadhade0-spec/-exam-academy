@@ -45,6 +45,7 @@ button{border:0;border-radius:9px;padding:12px;background:#1769d2;color:white;fo
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
 <script>
+const ADMIN_UID="WLAsOWXUElf1w8DiKTehX1c1nE23";
 const firebaseConfig={
 apiKey:"AIzaSyCO_bazjAMaijoXQg7CFYj1BvwL3xcTPOY",
 authDomain:"exam-academy-1bb03.firebaseapp.com",
@@ -67,19 +68,15 @@ async function adminLogin(){
  try{
   const result=await auth.signInWithEmailAndPassword(mobile+"@examacademy.app",password);
   currentUser=result.user;
-  const snap=await db.ref("admins").child(currentUser.uid).once("value");
-  const value=snap.val();
-  console.log("Admin diagnostic",{uid:currentUser.uid,value,databaseURL:firebase.app().options.databaseURL});
-  if(value===true || value==="true"){
-   document.getElementById("loginBox").classList.add("hidden");
-   document.getElementById("adminPanel").classList.remove("hidden");
-   document.getElementById("adminInfo").textContent="Authorized Admin";
-   loadQuestions();
-  }else{
-   msg.textContent="Admin access denied. UID: "+currentUser.uid+" | admins value: "+String(value)+" | DB: "+firebase.app().options.databaseURL;
-   await auth.signOut();
+  if(currentUser.uid!==ADMIN_UID){
+   msg.textContent="This account is not the authorized admin account.";
+   await auth.signOut();return;
   }
- }catch(e){msg.textContent="Firebase error: "+(e.code||"")+" "+e.message}
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("adminPanel").classList.remove("hidden");
+  document.getElementById("adminInfo").textContent="Authorized Admin";
+  fillFilterSubjects();
+ }catch(e){msg.textContent="Login error: "+(e.code||"")+" "+e.message}
 }
 async function saveQuestion(){
  const exam=document.getElementById("exam").value,subject=document.getElementById("subject").value,question=document.getElementById("question").value.trim();
@@ -94,7 +91,7 @@ async function saveQuestion(){
  }catch(e){alert("Save failed: "+e.message)}
 }
 async function loadQuestions(){
- if(!currentUser)return;
+ if(!currentUser||currentUser.uid!==ADMIN_UID)return;
  const exam=document.getElementById("filterExam").value,subject=document.getElementById("filterSubject").value;
  if(!subject)return;
  const box=document.getElementById("questionList"),path="questions/"+encodeURIComponent(exam)+"/"+encodeURIComponent(subject);box.textContent="Loading...";
