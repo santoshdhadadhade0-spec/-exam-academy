@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#081d3a">
+<title>Exam Academy | Dashboard</title>
+<style>
+:root{--navy:#081d3a;--blue:#1769d2;--sky:#eaf3ff;--ink:#14243a;--muted:#718096;--white:#fff;--line:#e5ebf3}
+*{box-sizing:border-box}body{margin:0;background:#f3f7fc;color:var(--ink);font-family:Arial,"Noto Sans Devanagari",sans-serif}
+header{background:linear-gradient(135deg,#061a35,#0c4380);color:#fff;padding:22px 18px 26px;border-radius:0 0 26px 26px}
+.top{display:flex;justify-content:space-between;align-items:center}.brand{font-size:20px;font-weight:800;letter-spacing:.4px}.avatar{width:42px;height:42px;border-radius:50%;background:#fff;color:#1457a6;display:grid;place-items:center;font-weight:800}
+.welcome{margin-top:25px;font-size:14px;color:#cfe2ff}.welcome h1{font-size:25px;margin:7px 0 5px;color:#fff}.welcome p{margin:0;color:#d7e7fa}
+.search{margin-top:20px;background:#fff;border-radius:13px;padding:13px 15px;color:#8492a6;font-size:14px}
+main{padding:18px 15px 95px;max-width:760px;margin:auto}.section-head{display:flex;justify-content:space-between;align-items:center;margin:21px 2px 12px}.section-head h2{font-size:18px;margin:0}.small{font-size:12px;color:var(--blue)}
+.exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.exam{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 8px;text-align:center;box-shadow:0 4px 14px #19375b0a}.exam .emoji{font-size:25px}.exam b{display:block;font-size:13px;margin-top:8px}.exam span{font-size:10px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.stat strong{font-size:22px;color:var(--blue)}.stat small{display:block;color:var(--muted);margin-top:4px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.feature{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;min-height:104px}.feature .ico{font-size:23px}.feature b{display:block;margin:8px 0 4px;font-size:14px}.feature small{color:var(--muted);font-size:11px}
+.notice{background:#e7f1ff;border:1px solid #cfe2ff;padding:14px;border-radius:14px;font-size:13px;line-height:1.55}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 4px calc(10px + env(safe-area-inset-bottom));z-index:5}
+nav a{text-decoration:none;color:#748197;font-size:11px;text-align:center;min-width:55px}nav a span{display:block;font-size:20px;margin-bottom:3px}nav a.active{color:var(--blue);font-weight:700}
+button{border:0;background:var(--blue);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+@media(min-width:600px){main{padding-left:22px;padding-right:22px}.feature-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="brand">🎓 EXAM ACADEMY</div><div class="avatar" aria-label="Profile">S</div></div>
+ <div class="welcome">नमस्कार, विद्यार्थी!
+  <h1>तुमच्या यशाची तयारी सुरू करा.</h1>
+  <p>Learn • Practice • Achieve</p>
+ </div>
+ <div class="search">🔎 &nbsp; विषय, परीक्षा किंवा नोट्स शोधा</div>
+</header>
+<main>
+ <div class="section-head"><h2>परीक्षा निवडा</h2><span class="small">सर्व परीक्षा</span></div>
+ <div class="exam-grid">
+  <div class="exam"><div class="emoji">👮</div><b>Police Bharti</b><span>पोलीस भरती</span></div>
+  <div class="exam"><div class="emoji">🪖</div><b>Agniveer</b><span>अग्निवीर</span></div>
+  <div class="exam"><div class="emoji">🎯</div><b>SSC GD</b><span>SSC GD</span></div>
+ </div>
+ <div class="section-head"><h2>माझा अभ्यास</h2><span class="small">डेमो आकडे</span></div>
+ <div class="stats">
+  <div class="stat"><strong>0</strong><small>पूर्ण केलेल्या टेस्ट</small></div>
+  <div class="stat"><strong>0%</strong><small>सरासरी गुण</small></div>
+ </div>
+ <div class="section-head"><h2>अभ्यास साहित्य</h2><span class="small">Explore</span></div>
+ <div class="feature-grid">
+  <div class="feature"><div class="ico">📝</div><b>Online Test Series</b><small>MCQ सराव आणि वेळेची टेस्ट</small></div>
+  <div class="feature"><div class="ico">📚</div><b>Study Notes</b><small>विषयानुसार अभ्यास नोट्स</small></div>
+  <div class="feature"><div class="ico">📖</div><b>Previous Year Questions</b><small>मागील वर्षांचे प्रश्न</small></div>
+  <div class="feature"><div class="ico">📰</div><b>Current Affairs</b><small>चालू घडामोडी</small></div>
+  <div class="feature"><div class="ico">🎬</div><b>Video Lectures</b><small>व्हिडिओद्वारे अभ्यास</small></div>
+  <div class="feature"><div class="ico">🏆</div><b>My Results</b><small>निकाल आणि प्रगती</small></div>
+ </div>
+ <div class="section-head"><h2>महत्त्वाची सूचना</h2></div>
+ <div class="notice">तुमचा अभ्यास नियमित ठेवा. दररोज टेस्ट सोडवा आणि चुकीच्या प्रश्नांची उजळणी करा. नवीन अभ्यास साहित्य लवकरच उपलब्ध होईल.</div>
+</main>
+<nav>
+ <a class="active" href="#"><span>⌂</span>Home</a>
+ <a href="#exams"><span>📋</span>Exams</a>
+ <a href="#tests"><span>📝</span>Tests</a>
+ <a href="#results"><span>🏆</span>Results</a>
+ <a href="#profile"><span>👤</span>Profile</a>
+</nav>
+</body>
+</html>
