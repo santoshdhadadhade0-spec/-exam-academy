@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -6,127 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Exam Academy Admin</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#eef3fb;color:#14243a;font-family:Arial,sans-serif}
-header{background:#081d3a;color:white;padding:20px}
-header h2{margin:0}
-main{max-width:700px;margin:auto;padding:15px}
+*{box-sizing:border-box}body{margin:0;background:#eef3fb;color:#14243a;font-family:Arial,sans-serif}
+header{background:#081d3a;color:white;padding:20px}main{max-width:700px;margin:auto;padding:15px}
 .card{background:white;padding:17px;border-radius:14px;margin:12px 0;border:1px solid #dce5f1}
-h3{margin-top:0}
-input,select,textarea{
-width:100%;padding:12px;margin:6px 0 13px;
-border:1px solid #ccd8e8;border-radius:9px;font-size:15px
-}
-textarea{min-height:80px}
-label{font-size:13px;font-weight:bold}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 13px;border:1px solid #ccd8e8;border-radius:9px;font-size:15px}
+textarea{min-height:80px}label{font-size:13px;font-weight:bold}
 button{border:0;border-radius:9px;padding:12px;background:#1769d2;color:white;font-weight:bold;margin:4px 0}
-.full{width:100%}
-.secondary{background:#e7f0ff;color:#174b91}
-.danger{background:#b42318}
-.hidden{display:none}
-.item{padding:12px;border:1px solid #dce5f1;border-radius:10px;margin:9px 0}
-small{color:#64748b}
+.full{width:100%}.secondary{background:#e7f0ff;color:#174b91}.danger{background:#b42318}
+.hidden{display:none}.item{padding:12px;border:1px solid #dce5f1;border-radius:10px;margin:9px 0}
 </style>
 </head>
 <body>
-
-<header>
-<h2>🎓 EXAM ACADEMY</h2>
-<p>Admin Question Manager</p>
-</header>
-
+<header><h2>🎓 EXAM ACADEMY</h2><p>Admin Question Manager</p></header>
 <main>
-
 <div class="card" id="loginBox">
 <h3>Admin Login</h3>
-<label>Mobile Number</label>
-<input id="mobile" maxlength="10" inputmode="numeric">
-<label>Password</label>
-<input id="password" type="password">
-<button class="full" onclick="adminLogin()">Login</button>
-<p id="loginMsg"></p>
+<label>Mobile Number</label><input id="mobile" maxlength="10" inputmode="numeric">
+<label>Password</label><input id="password" type="password">
+<button class="full" onclick="adminLogin()">Login</button><p id="loginMsg"></p>
 </div>
-
 <div id="adminPanel" class="hidden">
-
-<div class="card">
-<h3>Admin Dashboard</h3>
-<p id="adminInfo"></p>
-<button onclick="logout()" class="secondary">Logout</button>
-</div>
-
+<div class="card"><h3>Admin Dashboard</h3><p id="adminInfo"></p><button onclick="logout()" class="secondary">Logout</button></div>
 <div class="card">
 <h3 id="formTitle">Add New Question</h3>
-
-<label>Exam</label>
-<select id="exam" onchange="fillSubjects()">
-<option>Police Bharti</option>
-<option>Agniveer</option>
-<option>SSC GD</option>
-</select>
-
-<label>Subject</label>
-<select id="subject"></select>
-
-<label>Question</label>
-<textarea id="question" placeholder="Enter question"></textarea>
-
-<label>Option A</label>
-<input id="a">
-
-<label>Option B</label>
-<input id="b">
-
-<label>Option C</label>
-<input id="c">
-
-<label>Option D</label>
-<input id="d">
-
-<label>Correct Answer</label>
-<select id="answer">
-<option value="0">A</option>
-<option value="1">B</option>
-<option value="2">C</option>
-<option value="3">D</option>
-</select>
-
-<label>Explanation</label>
-<textarea id="explanation"></textarea>
-
-<label>Year (Optional)</label>
-<input id="year" placeholder="2024">
-
-<label>District (Optional)</label>
-<input id="district" placeholder="Pune">
-
-<button class="full" onclick="saveQuestion()">Save Question</button>
-<button class="full secondary hidden" id="cancelEdit" onclick="resetForm()">Cancel Edit</button>
-<p id="formMsg"></p>
+<label>Exam</label><select id="exam" onchange="fillSubjects()"><option>Police Bharti</option><option>Agniveer</option><option>SSC GD</option></select>
+<label>Subject</label><select id="subject"></select>
+<label>Question</label><textarea id="question" placeholder="Enter question"></textarea>
+<label>Option A</label><input id="a"><label>Option B</label><input id="b"><label>Option C</label><input id="c"><label>Option D</label><input id="d">
+<label>Correct Answer</label><select id="answer"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select>
+<label>Explanation</label><textarea id="explanation"></textarea><label>Year (Optional)</label><input id="year" placeholder="2024">
+<label>District (Optional)</label><input id="district" placeholder="Pune">
+<button class="full" onclick="saveQuestion()">Save Question</button><button class="full secondary hidden" id="cancelEdit" onclick="resetForm()">Cancel Edit</button><p id="formMsg"></p>
 </div>
-
-<div class="card">
-<h3>Question List</h3>
-<label>Exam</label>
-<select id="filterExam" onchange="fillFilterSubjects()">
-<option>Police Bharti</option>
-<option>Agniveer</option>
-<option>SSC GD</option>
-</select>
-<label>Subject</label>
-<select id="filterSubject" onchange="loadQuestions()"></select>
-<div id="questionList">Loading...</div>
-</div>
-
+<div class="card"><h3>Question List</h3><label>Exam</label><select id="filterExam" onchange="fillFilterSubjects()"><option>Police Bharti</option><option>Agniveer</option><option>SSC GD</option></select>
+<label>Subject</label><select id="filterSubject" onchange="loadQuestions()"></select><div id="questionList">Loading...</div></div>
 </div>
 </main>
-
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
-
 <script>
-const firebaseConfig = {
+const firebaseConfig={
 apiKey:"AIzaSyCO_bazjAMaijoXQg7CFYj1BvwL3xcTPOY",
 authDomain:"exam-academy-1bb03.firebaseapp.com",
 databaseURL:"https://exam-academy-1bb03-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -135,210 +54,70 @@ storageBucket:"exam-academy-1bb03.firebasestorage.app",
 messagingSenderId:"340035902495",
 appId:"1:340035902495:web:30cdd99a70fd2f020a892a"
 };
-
 firebase.initializeApp(firebaseConfig);
-const auth=firebase.auth();
-const db=firebase.database();
-
-const subjects={
-"Police Bharti":["मराठी","गणित","बुद्धिमत्ता","सामान्य ज्ञान"],
-"Agniveer":["General Knowledge","General Science","Mathematics","Reasoning"],
-"SSC GD":["Reasoning","General Knowledge","Mathematics","English"]
-};
-
-let editingId=null;
-let currentUser=null;
-
-function fillSubjects(){
-let list=subjects[document.getElementById("exam").value];
-document.getElementById("subject").innerHTML=
-list.map(x=>`<option>${x}</option>`).join("");
-}
-
-function fillFilterSubjects(){
-let list=subjects[document.getElementById("filterExam").value];
-document.getElementById("filterSubject").innerHTML=
-list.map(x=>`<option>${x}</option>`).join("");
-loadQuestions();
-}
-
+const auth=firebase.auth(),db=firebase.database();
+const subjects={"Police Bharti":["मराठी","गणित","बुद्धिमत्ता","सामान्य ज्ञान"],"Agniveer":["General Knowledge","General Science","Mathematics","Reasoning"],"SSC GD":["Reasoning","General Knowledge","Mathematics","English"]};
+let editingId=null,currentUser=null;
+function fillSubjects(){document.getElementById("subject").innerHTML=subjects[document.getElementById("exam").value].map(x=>`<option>${x}</option>`).join("")}
+function fillFilterSubjects(){document.getElementById("filterSubject").innerHTML=subjects[document.getElementById("filterExam").value].map(x=>`<option>${x}</option>`).join("");loadQuestions()}
 async function adminLogin(){
-let mobile=document.getElementById("mobile").value.trim();
-let password=document.getElementById("password").value;
-
-if(!/^[0-9]{10}$/.test(mobile)||!password){
-alert("Enter valid mobile number and password");
-return;
+ const mobile=document.getElementById("mobile").value.trim(),password=document.getElementById("password").value,msg=document.getElementById("loginMsg");
+ msg.textContent="";
+ if(!/^[0-9]{10}$/.test(mobile)||!password){msg.textContent="Enter valid mobile number and password";return}
+ try{
+  const result=await auth.signInWithEmailAndPassword(mobile+"@examacademy.app",password);
+  currentUser=result.user;
+  const snap=await db.ref("admins").child(currentUser.uid).once("value");
+  const value=snap.val();
+  console.log("Admin diagnostic",{uid:currentUser.uid,value,databaseURL:firebase.app().options.databaseURL});
+  if(value===true || value==="true"){
+   document.getElementById("loginBox").classList.add("hidden");
+   document.getElementById("adminPanel").classList.remove("hidden");
+   document.getElementById("adminInfo").textContent="Authorized Admin";
+   loadQuestions();
+  }else{
+   msg.textContent="Admin access denied. UID: "+currentUser.uid+" | admins value: "+String(value)+" | DB: "+firebase.app().options.databaseURL;
+   await auth.signOut();
+  }
+ }catch(e){msg.textContent="Firebase error: "+(e.code||"")+" "+e.message}
 }
-
-try{
-let result=await auth.signInWithEmailAndPassword(
-mobile+"@examacademy.app",password
-);
-currentUser=result.user;
-
-let admin=await db.ref("admins/"+currentUser.uid).once("value");
-
-if(admin.val()===true){
-document.getElementById("loginBox").classList.add("hidden");
-document.getElementById("adminPanel").classList.remove("hidden");
-document.getElementById("adminInfo").textContent=
-"Authorized Admin: "+currentUser.uid;
-loadQuestions();
-}else{
-await auth.signOut();
-alert("Admin access denied");
-}
-}catch(error){
-document.getElementById("loginMsg").textContent=error.message;
-}
-}
-
 async function saveQuestion(){
-let exam=document.getElementById("exam").value;
-let subject=document.getElementById("subject").value;
-let question=document.getElementById("question").value.trim();
-let options=["a","b","c","d"].map(id=>
-document.getElementById(id).value.trim()
-);
-
-if(!question||options.some(x=>!x)){
-alert("Fill question and all four options");
-return;
+ const exam=document.getElementById("exam").value,subject=document.getElementById("subject").value,question=document.getElementById("question").value.trim();
+ const options=["a","b","c","d"].map(id=>document.getElementById(id).value.trim());
+ if(!question||options.some(x=>!x)){alert("Fill question and all four options");return}
+ const data={exam,subject,question,options,answer:Number(document.getElementById("answer").value),explanation:document.getElementById("explanation").value.trim(),year:document.getElementById("year").value.trim(),district:document.getElementById("district").value.trim(),updatedAt:Date.now()};
+ const path="questions/"+encodeURIComponent(exam)+"/"+encodeURIComponent(subject);
+ try{
+  if(editingId)await db.ref(path+"/"+editingId).update(data);else await db.ref(path).push({...data,createdAt:Date.now()});
+  document.getElementById("formMsg").textContent="Question saved successfully!";resetForm();
+  document.getElementById("filterExam").value=exam;fillFilterSubjects();document.getElementById("filterSubject").value=subject;loadQuestions();
+ }catch(e){alert("Save failed: "+e.message)}
 }
-
-let data={
-exam,subject,question,options,
-answer:Number(document.getElementById("answer").value),
-explanation:document.getElementById("explanation").value.trim(),
-year:document.getElementById("year").value.trim(),
-district:document.getElementById("district").value.trim(),
-updatedAt:Date.now()
-};
-
-let path="questions/"+encodeURIComponent(exam)+"/"+
-encodeURIComponent(subject);
-
-try{
-if(editingId){
-await db.ref(path+"/"+editingId).update(data);
-}else{
-await db.ref(path).push({
-...data,createdAt:Date.now()
-});
-}
-document.getElementById("formMsg").textContent="Question saved successfully!";
-resetForm();
-document.getElementById("filterExam").value=exam;
-fillFilterSubjects();
-document.getElementById("filterSubject").value=subject;
-loadQuestions();
-}catch(error){
-alert("Save failed: "+error.message);
-}
-}
-
 async function loadQuestions(){
-if(!currentUser)return;
-
-let exam=document.getElementById("filterExam").value;
-let subject=document.getElementById("filterSubject").value;
-let path="questions/"+encodeURIComponent(exam)+"/"+
-encodeURIComponent(subject);
-
-let box=document.getElementById("questionList");
-box.textContent="Loading...";
-
-try{
-let snap=await db.ref(path).once("value");
-let data=snap.val()||{};
-box.innerHTML="";
-
-let entries=Object.entries(data);
-if(!entries.length){
-box.textContent="No questions added yet.";
-return;
+ if(!currentUser)return;
+ const exam=document.getElementById("filterExam").value,subject=document.getElementById("filterSubject").value;
+ if(!subject)return;
+ const box=document.getElementById("questionList"),path="questions/"+encodeURIComponent(exam)+"/"+encodeURIComponent(subject);box.textContent="Loading...";
+ try{
+  const snap=await db.ref(path).once("value"),data=snap.val()||{};box.innerHTML="";
+  const entries=Object.entries(data);if(!entries.length){box.textContent="No questions added yet.";return}
+  entries.forEach(([id,q])=>{const item=document.createElement("div");item.className="item";const title=document.createElement("b");title.textContent=q.question||"";const details=document.createElement("p");details.textContent=(q.options||[]).join(" | ");const edit=document.createElement("button");edit.textContent="Edit";edit.className="secondary";edit.onclick=()=>editQuestion(id,q);const del=document.createElement("button");del.textContent="Delete";del.className="danger";del.onclick=()=>deleteQuestion(id);item.append(title,details,edit,del);box.appendChild(item)})
+ }catch(e){box.textContent="Error: "+e.message}
 }
-
-entries.forEach(([id,q])=>{
-let item=document.createElement("div");
-item.className="item";
-
-let title=document.createElement("b");
-title.textContent=q.question;
-
-let details=document.createElement("p");
-details.textContent=(q.options||[]).join(" | ");
-
-let edit=document.createElement("button");
-edit.textContent="Edit";
-edit.className="secondary";
-edit.onclick=()=>editQuestion(id,q);
-
-let del=document.createElement("button");
-del.textContent="Delete";
-del.className="danger";
-del.onclick=()=>deleteQuestion(id);
-
-item.append(title,details,edit,del);
-box.appendChild(item);
-});
-
-}catch(error){
-box.textContent="Error: "+error.message;
-}
-}
-
 function editQuestion(id,q){
-editingId=id;
-document.getElementById("exam").value=q.exam;
-fillSubjects();
-document.getElementById("subject").value=q.subject;
-document.getElementById("question").value=q.question||"";
-["a","b","c","d"].forEach((x,i)=>{
-document.getElementById(x).value=q.options[i]||"";
-});
-document.getElementById("answer").value=q.answer;
-document.getElementById("explanation").value=q.explanation||"";
-document.getElementById("year").value=q.year||"";
-document.getElementById("district").value=q.district||"";
-document.getElementById("formTitle").textContent="Edit Question";
-document.getElementById("cancelEdit").classList.remove("hidden");
-window.scrollTo(0,0);
+ editingId=id;document.getElementById("exam").value=q.exam;fillSubjects();document.getElementById("subject").value=q.subject;
+ document.getElementById("question").value=q.question||"";["a","b","c","d"].forEach((x,i)=>document.getElementById(x).value=(q.options||[])[i]||"");
+ document.getElementById("answer").value=q.answer;document.getElementById("explanation").value=q.explanation||"";document.getElementById("year").value=q.year||"";document.getElementById("district").value=q.district||"";
+ document.getElementById("formTitle").textContent="Edit Question";document.getElementById("cancelEdit").classList.remove("hidden");window.scrollTo(0,0)
 }
-
 async function deleteQuestion(id){
-if(!confirm("Delete this question?"))return;
-
-let exam=document.getElementById("filterExam").value;
-let subject=document.getElementById("filterSubject").value;
-let path="questions/"+encodeURIComponent(exam)+"/"+
-encodeURIComponent(subject)+"/"+id;
-
-try{
-await db.ref(path).remove();
-loadQuestions();
-}catch(error){
-alert(error.message);
+ if(!confirm("Delete this question?"))return;
+ const path="questions/"+encodeURIComponent(document.getElementById("filterExam").value)+"/"+encodeURIComponent(document.getElementById("filterSubject").value)+"/"+id;
+ try{await db.ref(path).remove();loadQuestions()}catch(e){alert(e.message)}
 }
-}
-
-function resetForm(){
-editingId=null;
-["question","a","b","c","d","explanation","year","district"]
-.forEach(id=>document.getElementById(id).value="");
-document.getElementById("answer").value="0";
-document.getElementById("formTitle").textContent="Add New Question";
-document.getElementById("cancelEdit").classList.add("hidden");
-}
-
-async function logout(){
-await auth.signOut();
-location.reload();
-}
-
-fillSubjects();
-fillFilterSubjects();
+function resetForm(){editingId=null;["question","a","b","c","d","explanation","year","district"].forEach(id=>document.getElementById(id).value="");document.getElementById("answer").value="0";document.getElementById("formTitle").textContent="Add New Question";document.getElementById("cancelEdit").classList.add("hidden")}
+async function logout(){await auth.signOut();location.reload()}
+fillSubjects();fillFilterSubjects();
 </script>
 </body>
 </html>
