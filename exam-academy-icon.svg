@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="110" fill="#10264d"/>
+  <path d="M90 205 L256 125 L422 205 L256 285 Z" fill="#f5c451"/>
+  <path d="M145 245 V335 Q256 405 367 335 V245 L256 300 Z" fill="#ffffff"/>
+  <path d="M256 285 V390" stroke="#f5c451" stroke-width="16"/>
+  <path d="M405 215 V310" stroke="#f5c451" stroke-width="14"/>
+  <circle cx="405" cy="325" r="16" fill="#f5c451"/>
+  <text x="256" y="465" text-anchor="middle" font-size="38" font-weight="bold" fill="#ffffff">EA</text>
+</svg>
